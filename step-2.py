@@ -52,13 +52,17 @@ def solution(cube_array, input_value):
 input_values = input('CUBE> ')
 
 while input_values != 'Q':
-    for value in input_values:
-        solution(cube_array, value)
-        print(value)
+    for i in range(len(input_values)):
+        if (i != len(input_values)-1) and (input_values[i + 1] == '\''):
+            i += 1
+            solution(cube_array, input_values[i] + '\'')
+        else:
+            solution(cube_array, input_values[i])
+        print(input_values[i])
         for j in range(len(cube_array)):
             for k in range(len(cube_array)):
                 print(cube_array[j][k], end='')
             print()
     input_values = input('> ')
     if input_values == 'Q':
-        print("BYE~")
+        print("Bye~")
